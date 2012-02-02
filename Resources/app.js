@@ -1,3 +1,5 @@
+var test_enable;
 var ApplicationWindow = require('ui/ApplicationWindow');
-new ApplicationWindow().open();
+var app = new ApplicationWindow(test_enable);
+app.fireEvent('start');
 

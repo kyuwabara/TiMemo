@@ -1,4 +1,4 @@
-function ApplicationWindow() {
+function ApplicationWindow(test_enable) {
     var MemoFormView = require('ui/MemoFormView');
     var MemoTableView = require('ui/MemoTableView');
 
@@ -17,6 +17,15 @@ function ApplicationWindow() {
 
     memoForm.addEventListener('memoSaved', function() {
         memoTable.fireEvent('memoAdded');
+    });
+
+    self.addEventListener('start', function() {
+        if (test_enable) {
+            var tests = require('spec/tests');
+            tests.execute();
+        } else {
+            self.open();
+        }
     });
 
     return self;
