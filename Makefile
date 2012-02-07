@@ -22,7 +22,7 @@ run:
 		exit 1;\
 	fi
 	@mkdir -p ${PROJECT_ROOT}/${PROJECT_NAME}/Resources/spec/
-	@echo "" > ${PROJECT_ROOT}/${PROJECT_NAME}/Resources/spec/enabled.js
+	@echo "exports.tests_enabled = false;" > ${PROJECT_ROOT}/${PROJECT_NAME}/Resources/spec/enabled.js
 	@make launch-titanium
 
 test:
@@ -31,7 +31,7 @@ test:
 		exit 1;\
 	fi
 	@mkdir -p ${PROJECT_ROOT}/${PROJECT_NAME}/Resources/spec/
-	@echo "timemo.tests_enabled = true;" > ${PROJECT_ROOT}/${PROJECT_NAME}/Resources/spec/enabled.js
+	@echo "exports.tests_enabled = true;" > ${PROJECT_ROOT}/${PROJECT_NAME}/Resources/spec/enabled.js
 	@make launch-titanium
 
 clean:
