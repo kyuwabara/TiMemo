@@ -1,7 +1,7 @@
 exports.execute = function() {
     var jasmine = require('spec/lib/jasmine-1.1.0').jasmine;
-    var tirep = require('spec/lib/jasmine-titanium').TitaniumReporter;
-    jasmine.TitaniumReporter = tirep;
+    var reporter = require('spec/lib/jasmine-titanium').TitaniumReporter;
+    //jasmine.TitaniumReporter = tirep;
 
     // Include all the test files
     //Ti.include('/spec/test_main.js');
@@ -10,7 +10,7 @@ exports.execute = function() {
         Titanium.API.debug(name);
     }
 
-    jasmine.getEnv().addReporter(new jasmine.TitaniumReporter());
+    jasmine.getEnv().addReporter(new reporter());
     jasmine.getEnv().execute();
 };
 

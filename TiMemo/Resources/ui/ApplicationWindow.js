@@ -19,15 +19,6 @@ function ApplicationWindow(test_enable) {
         memoTable.fireEvent('memoAdded');
     });
 
-    self.addEventListener('start', function() {
-        if (test_enable) {
-            var tests = require('spec/tests');
-            tests.execute();
-        } else {
-            self.open();
-        }
-    });
-
     return self;
 }
 
