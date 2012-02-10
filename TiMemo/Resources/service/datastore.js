@@ -30,3 +30,8 @@ exports.saveMemo = function(memo) {
     Ti.App.Properties.setString('db', JSON.stringify(datastore));
 };
 
+exports.reset = function() {
+    datastore = [];
+    Ti.API.debug('clear database... done.');
+};
+

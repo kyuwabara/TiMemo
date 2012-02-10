@@ -1,19 +1,34 @@
-(function(){
-    var j = require('/spec/lib/jasmine-1.1.0');
+// I don't like this at all, but it beats having to call
+// 'jasmine.it()' or 'jasmine.expect()' all the freaking time.
+var j = require('spec/lib/jasmine-1.1.0');
+var methods = ['spyOn',
+               'it',
+               'xit',
+               'expect',
+               'runs',
+               'waits',
+               'waitsFor',
+               'beforeEach',
+               'afterEach',
+               'describe',
+               'xdescribe'
+               ];
 
-    // I don't like this at all, but it beats having to call 'jasmine.it()' or 'jasmine.expect()' all the freaking time.
-    for (name in j) {
-        this[name] = j[name];
-    }
+for (var i = 0, l = methods.length; i < l;  i++) {
+    var method = methods[i];
+    this[method] = j[method];
+    Ti.API.debug('require ' + method);
+}
 
-    // To learn how to write Jasmine tests, please read Jasmine documentation:
-    // https://github.com/pivotal/jasmine/wiki
+exports.run = function() {
+    describe('datastore', function() {
+        var datastore = require('service/datastore');
 
-    describe('Javascript Array.', function() {
-        var arr = [1,2,3,4];
-        it('has length property', function() {
-            expect(arr.length).toBe(4);
+        it('can be reset by reset method.', function() {
+            datastore.reset();
+            var memos = datastore.getMemos();
+            expect(memos.length).toBe(0);
         });
     });
+};
 
-})();
